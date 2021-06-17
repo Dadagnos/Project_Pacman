@@ -1,5 +1,6 @@
 # Project_Pacman
 SEB OOPD 20/21 opdracht voor Software Development deeltijd aan de HAN. Een eigen versie van Pacman nagebouwd m.b.v. de OOPG engine.
+De zelf geschreven code hiervoor bevindt zich in: https://github.com/Dadagnos/Project_Pacman/tree/main/src/main/java/nl/han/ica/oopg/pacmanpackage
 
 
 MUST_HAVES:

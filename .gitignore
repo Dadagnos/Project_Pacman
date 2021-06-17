@@ -1,0 +1,40 @@
+*.class
+
+# Maven2
+target
+
+# IntelliJ
+out
+.idea
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# OSX
+.DS_Store
+
+# IntelliJ
+.idea/
+/bin/
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# Waterworld example log and persistence file
+src/main/java/nl/han/ica/waterworld/media/bubblesPopped.txt
+
+# OOPG engine log file
+src/main/java/nl/han/ica/oopdprocessingenginehan/logger/Log.log
+
+# Visual Studio Code
+.vscode

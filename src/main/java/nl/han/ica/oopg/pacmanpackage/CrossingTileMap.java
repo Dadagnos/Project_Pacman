@@ -2,37 +2,38 @@ package nl.han.ica.oopg.pacmanpackage;
 
 import java.util.ArrayList;
 
+/**
+ * @author Sarin
+ */
 public class CrossingTileMap {
-	/**
-	 * 
-	 */
+
 	private PacmanSpel game;
 	/**
-	 * 
+	 * de crossingsmap variabale wordt gevuld met de centrale x en y posities van alle kruisingen op het scherm
 	 */
 	private static double[][] crossingsMap;
 	/**
-	 * 
+	 * de tilesmap bevat gewoon de tileMap zoals deze bij de start geinitialiseerd wordt
 	 */
 	private int[][] tilesmap;
 	/**
-	 * 
+	 * het aantal horizontale tiles
 	 */
 	private int horiTiles;
 	/**
-	 * 
+	 * het aantal verticale tiles
 	 */
 	private int vertTiles;
 	/**
-	 * 
+	 * het aantal kruispunten
 	 */
 	private int numberOfCrossings;
 	
 	/**
 	 * @param game
-	 * @param tilesMap
-	 * @param horiTiles
-	 * @param vertTiles
+	 * @param tilesMap (de tilesmap bevat gewoon de tileMap zoals deze bij de start geinitialiseerd wordt)
+	 * @param horiTiles (het aantal horizontale tiles)
+	 * @param vertTiles (het aantal verticale tiles)
 	 */
 	public CrossingTileMap(PacmanSpel game, int[][] tilesMap, int horiTiles, int vertTiles) {
 		this.game = game;
@@ -65,7 +66,7 @@ public class CrossingTileMap {
 
 	/**
 	 * @param tilesMap
-	 * @return
+	 * @return numberOfCrossings (aantal kruispunten op de kaart)
 	 */
 	public int getNumberOfCrossings(int[][] tilesMap){
 		int numberOfCrossings = 0;
@@ -82,28 +83,10 @@ public class CrossingTileMap {
 	}
 	
 	/**
-	 * @return
+	 * @return crossingsMap
 	 */
 	public double[][] getCrossingsMap(){
 		return crossingsMap;
-	}
-	
-	/**
-	 * checks if the object is on a crossing. Returns true or false plus the crossings-center X and Y coordinate
-	 * @return
-	 */
-	public double[][] checkIfOnCrossings(double objectX, double objectY, int marge) {
-		double x = objectX;
-		double y = objectY;
-		int m = marge;
-		double[][] boolxy = new double[numberOfCrossings][2];
-		for (int i=0; i<crossingsMap.length; i++) {
-				if (x>=(crossingsMap[i][0]-m) & x<=(crossingsMap[i][0]+m) & y>=(crossingsMap[i][1]-m) & y<=(crossingsMap[i][1]+m)) {
-					boolxy[i][0] = (crossingsMap[i][0]);
-					boolxy[i][1] = (crossingsMap[i][1]);
-					}
-				}		
-		return boolxy;
 	}
 
 }

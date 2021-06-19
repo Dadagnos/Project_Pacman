@@ -1,14 +1,12 @@
 package nl.han.ica.oopg.pacmanpackage;
 
+/**
+ * @author David Bartenstein
+ *
+ */
 public class CrossingTile{
 
-	/**
-	 * 
-	 */
 	private float x;
-	/**
-	 * 
-	 */
 	private float y;
 
 	/**
@@ -17,7 +15,6 @@ public class CrossingTile{
 	public CrossingTile(PacmanSpel game) {
 		int size = game.getTileSize();
 	}
-	
 	/**
 	 * @param x
 	 */
@@ -33,14 +30,14 @@ public class CrossingTile{
 	}
 	
 	/**
-	 * @return
+	 * @return x
 	 */
 	public float getX(){
 		return this.x;
 	}
 	
 	/**
-	 * @return
+	 * @return y
 	 */
 	public float getY(){
 		return y;

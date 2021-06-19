@@ -13,27 +13,33 @@ import processing.core.PVector;
  * @author David Bartenstein
  * De pacmanklasse die door de speler te besturen is
  */
+public class Pacman extends SpriteObject implements ICollidableWithTiles {
 
-public class Pacman extends SpriteObject implements ICollidableWithTiles, Besturing {
-	/**
-	 * 
-	 */
 	private PacmanSpel game;
+	/**
+	 * pacmanStatus slaat de toestand van pacman op aan de hand van de enum PacmanStatus
+	 */
 	private PacmanStatus pacmanStatus = PacmanStatus.ALIVE;
 	
 	/**
-	 * @param game
-	 * @param speed
+	 * @param game (het spel dat op dit moment aan het draaien is)
+	 * @param speed (de snelheid waarmee pacman kan bewegen)
 	 */
 	public Pacman(PacmanSpel game, int speed) {
 	super(new Sprite(PacmanSpel.MEDIA_URL.concat("pacman7.png")));
 	this.game = game;
 	}
 
-
-
 	/**
-	 *
+	 *in deze tileCollision functie worden verschillende checks uitgevoerd. O.a:
+	 * - of er een Snoeptile geraakt is, en zo ja:
+	 *			-wordt de score verhoogd en het aantal nog op te eten SnoepTiles met verlaagd
+	 * - of er een FloorTile geraakt wordt, en zo ja:
+	 * 			-wordt er op de crossingTileMap gekeken of het vlakbij een kruispunt is,
+	 * 			-zo ja:
+	 * 					-wordt pacman mooi gecentreerd om makkelijker de bochten te kunnen nemen
+	 * 			-zo nee:
+	 * 					-wordt pacman tegengehouden omdat hij niet door muren mag
 	 */
 	@Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
@@ -41,12 +47,15 @@ public class Pacman extends SpriteObject implements ICollidableWithTiles, Bestur
         Sprite invisible = new Sprite(PacmanSpel.MEDIA_URL.concat("invisible.png"));
         for (CollidedTile ct : collidedTiles) {
             if (ct.getTile() instanceof SnoepTile) {
+            	int countBackwards = game.getCountSnoep();
             	if (ct.getTile().getSprite().equals(invisible)) {
             	} else {
             		ct.getTile().setSprite(invisible);
             		PVector thetile = game.getTileMap().getTileIndex(ct.getTile());
             		game.getTileMap().setTile((int)thetile.x, (int)thetile.y, -1);
 					game.setSnoepjesScore(game.getSnoepjesScore() + 1);
+					countBackwards--;
+					game.setCountSnoep(countBackwards);
 				}	
             }
             if (ct.getTile() instanceof FloorTile) {
@@ -96,15 +105,14 @@ public class Pacman extends SpriteObject implements ICollidableWithTiles, Bestur
     }
 
 	/**
-	 *
+	 * de update functie van Pacman
 	 */
 	@Override
 	public void update() {
-		
 	}
 	
 	/**
-	 *
+	 *de keyPressed methode registreert of er pijltjestoetsen ingedrukt worden en bestuurt pacman
 	 */
 	@Override
 	public void keyPressed(int keyCode, char key) {
@@ -123,7 +131,7 @@ public class Pacman extends SpriteObject implements ICollidableWithTiles, Bestur
     }
 	
 	/**
-	 *
+	 *de keyReleased methode laat pacman stoppen als de toetsen niet ingedrukt worden
 	 */
 	public void keyReleased(int keyCode, char key) {
 		if (keyCode == LEFT || keyCode == RIGHT || keyCode == UP || keyCode == DOWN) {
@@ -131,10 +139,16 @@ public class Pacman extends SpriteObject implements ICollidableWithTiles, Bestur
 		}
 	}
 
+	/**
+	 * @return pacmanStatus
+	 */
 	public PacmanStatus getPacmanStatus() {
 		return pacmanStatus;
 	}
 
+	/**
+	 * @param pacmanStatus
+	 */
 	public void setPacmanStatus(PacmanStatus status) {
 		pacmanStatus = status;
 	}

@@ -13,24 +13,20 @@ import nl.han.ica.oopg.objects.Sprite;
 import nl.han.ica.oopg.objects.SpriteObject;
 import processing.core.PVector;
 
+/**
+ * creeert de spookjes (monsters) in die door het spel dwalen
+ * @author David Bartenstein
+ */
 public class Monster extends SpriteObject implements ICollidableWithTiles, ICollidableWithGameObjects {
-	/**
-	 * 
-	 */
+
 	private PacmanSpel game;
-	/**
-	 * 
-	 */
 	private float speed;
-	/**
-	 * 
-	 */
 	private int direction = getRandomInt();
 	public Object crossingTileMap;
 
 	/**
 	 * @param game
-	 * @param speed
+	 * @param speed (snelheid waarmee de spokenmonsters zich voortbewegen)
 	 */
 	public Monster(PacmanSpel game, int speed) {
 		super(new Sprite(PacmanSpel.MEDIA_URL.concat("ghost3.png")));
@@ -39,8 +35,8 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
 		monsterMoves(direction);
 	    }
 	
-	
 	/**
+	 * bepaalt in welke richting de spoken zich voortbewegen aan de hand van de direction enum in de game engine
 	 * @param direction
 	 */
 	public void monsterMoves(int direction) {
@@ -61,6 +57,7 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
 	}
 	
 	/**
+	 * geeft de spokenmonsters bij ieder kruispunt een willekeurige richting
 	 * @param crossingsMap
 	 */
 	public void checkForCrossings(double[][] crossingsMap ) {
@@ -78,7 +75,8 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
 
 	
 	/**
-	 *
+	 *deze tileCollision methode checkt of de spokenmonsters tegen een muur botsen
+	 *en geeft ze dan een willekeurige nieuwe richting.
 	 */
 	@Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
@@ -126,17 +124,17 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
         }
     }
 	
-	
-	
+
 	/**
-	 * @return
+	 * @return randomInt
 	 */
 	private int getRandomInt() {
 		return(int) ((Math.random() * (4 - 1)) + 1);
 	}
 	
 	/**
-	 *
+	 *de update methode stuurt de spokenmonsters aan als het nodig is m.b.v. de checkForCrossings methode
+	 *en de monsterMoves methode
 	 */
 	@Override
 	public void update() {
@@ -145,7 +143,10 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
 	}
 
 	/**
-	 *
+	 * deze gameObjectCollision methode bepaalt wat er gebeurt als een monster met de speler
+	 * in aanraking is gekomen:
+	 * 	-pacman wordt teruggestuurd naar de startplaats
+	 *  -pacman krijgt de status "EATEN"
 	 */
 	@Override
 	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -157,9 +158,9 @@ public class Monster extends SpriteObject implements ICollidableWithTiles, IColl
 	        }
 		}
 	}
-	
+
 	/**
-	 * 
+	 * Deze methode bepaalt met behulp van verschillende random getallen een nieuwe richting voor pacman
 	 */
 	public void setNewDirection(){
 		Random random = new Random();

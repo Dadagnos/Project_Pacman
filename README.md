@@ -1,5 +1,6 @@
 # Project_Pacman
-SEB OOPD 20/21 opdracht voor Software Development deeltijd aan de HAN. Een eigen versie van Pacman nagebouwd m.b.v. de OOPG engine.
+SEB OOPD 20/21 opdracht voor Software Development deeltijd aan de HAN.
+Ik heb een eigen versie van het spel Pacman nagebouwd m.b.v. de OOPG engine.
 De zelf geschreven code hiervoor bevindt zich in: https://github.com/Dadagnos/Project_Pacman/tree/main/src/main/java/nl/han/ica/oopg/pacmanpackage
 
 
@@ -20,3 +21,5 @@ COULD_HAVES:
 
 WOULD_HAVES:
 * Het doolhof van muurtjes wordt elke keer willekeurig gegenereerd
+
+Het spel maakt gebruik van functionaliteiten van de OOPG game engine zoals die per 24 april 2021 te vinden was op https://github.com/HANICA/oopg

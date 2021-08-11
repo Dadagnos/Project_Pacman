@@ -14,12 +14,12 @@ MUST_HAVES:
 SHOULD_HAVES:
 * Pacman heeft meerdere levens waarvan er elke keer dat hij geraakt wordt door een monster eentje verdwijnt
 * Als Pacman alle snoepjes op heeft gegeten begint er een nieuw level
-* Pacman kan extra levens verdienen door speciale snoepjes op te eten die maar korte tijd verschijnen
 
 COULD_HAVES:
-* Pacman kan teleporteren naar een andere plek door op een teleporteer platformpje te gaan staan
+* Pacman kan extra levens verdienen door speciale snoepjes op te eten die maar korte tijd verschijnen
 
 WOULD_HAVES:
+* Pacman kan teleporteren naar een andere plek door op een teleporteer platformpje te gaan staan
 * Het doolhof van muurtjes wordt elke keer willekeurig gegenereerd
 
 Het spel maakt gebruik van functionaliteiten van de OOPG game engine zoals die per 24 april 2021 te vinden was op https://github.com/HANICA/oopg
